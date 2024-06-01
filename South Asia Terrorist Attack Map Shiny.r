@@ -25,7 +25,8 @@ data_matrix <- as.matrix(SA_Select[, c("Longitude", "Latitude")])
 # Calculate the Mahalanobis distance for each observation
 mahalanobis_dist <- mahalanobis(data_matrix, colMeans(data_matrix), cov(data_matrix))
 # The mahalanobis function calculates the Mahalanobis distance for each observation (row) in the data_matrix from the mean of the data. This distance 
-# measures how far each point is from the center of the data distribution considering the covariance among the variables. The function takes three arguments:
+# measures how far each point is from the center of the data distribution considering the covariance among the variables. The function takes three 
+arguments:
 # The data matrix of interest.
 # The mean of each column (variable) in the matrix (colMeans(data_matrix)).
 # The covariance matrix of the variables (cov(data_matrix)).
@@ -33,7 +34,8 @@ mahalanobis_dist <- mahalanobis(data_matrix, colMeans(data_matrix), cov(data_mat
 # Set a threshold for outlier detection
 mahalanobis_threshold <- qchisq(0.975, df = 2)
 # Here, a threshold is set using the chi-squared distribution (qchisq). This function returns the critical value for a chi-squared distribution where 97.5% 
-# of the values fall below this threshold (assuming a 95% confidence level). The degrees of freedom (df = 2) corresponds to the number of variables (Longitude and Latitude).
+# of the values fall below this threshold (assuming a 95% confidence level). The degrees of freedom (df = 2) corresponds to the number of variables 
+(Longitude and Latitude).
 
 # Identify bivariate outliers
 bivariate_outliers <- which(mahalanobis_dist > mahalanobis_threshold)
